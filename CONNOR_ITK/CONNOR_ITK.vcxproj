@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetExt>.dll</TargetExt>
+    <TargetName>jl</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -130,7 +131,6 @@
     <ClCompile Include="jl_insert_img_pdf.cxx" />
     <ClCompile Include="jl_insert_modular.cxx" />
     <ClCompile Include="JL_Send_Mail.cxx" />
-    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="epm_handler_common.h" />

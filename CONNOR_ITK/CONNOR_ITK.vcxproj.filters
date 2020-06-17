@@ -31,9 +31,6 @@
     <ClCompile Include="jl_insert_modular.cxx">
       <Filter>handler</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>handler</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="epm_handler_common.h">
