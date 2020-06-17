@@ -130,6 +130,7 @@
     <ClCompile Include="jl_insert_img_pdf.cxx" />
     <ClCompile Include="jl_insert_modular.cxx" />
     <ClCompile Include="JL_Send_Mail.cxx" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="epm_handler_common.h" />
