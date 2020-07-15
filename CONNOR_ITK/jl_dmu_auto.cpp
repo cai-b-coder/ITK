@@ -32,11 +32,11 @@ using namespace std;
 //#include "E:/20200520/DM_ITK/jf_itk/jf_itk/jf_itk/ocilib.cxx"
 
 int jl_dmu_auto(EPM_action_message_t msg) {
-	::CoInitialize(NULL);   //³õÊ¼»¯OLE/COM¿â»·¾³
+	::CoInitialize(NULL);   //åˆå§‹åŒ–OLE/COMåº“ç¯å¢ƒ
 	HRESULT hr = NULL;
-	_ConnectionPtr m_pConnection; // Êı¾İ¿â
-	_RecordsetPtr m_pRecordset; // ÃüÁî
-	_CommandPtr m_pCommand; // ¼ÇÂ¼
+	_ConnectionPtr m_pConnection; // æ•°æ®åº“
+	_RecordsetPtr m_pRecordset; // å‘½ä»¤
+	_CommandPtr m_pCommand; // è®°å½•
 	
 	int ifail = EPM_go, count = 0, arg_cnt = 0;
 	int outputColumn = 0, outputValueCount = 0;
@@ -45,36 +45,36 @@ int jl_dmu_auto(EPM_action_message_t msg) {
 	//char arg1value[1024] = "";
 	//char* arg = NULL, * argflag = NULL, * argvalue = NULL;
 	char* item_id,*uid="";
-	char* control_name = "btnDmu";  //DMUÑéÖ¤Í¨¹ı°´Å¥µÄname
+	char* control_name = "btnDmu";  //DMUéªŒè¯é€šè¿‡æŒ‰é’®çš„name
 	char* style = "false";
 
 	char*** outputValue = (char***)calloc(1024, sizeof(char**));
 
-	//»ñÈ¡Á÷³ÌÈÎÎñ
+	//è·å–æµç¨‹ä»»åŠ¡
 	EPM_ask_root_task(msg.task, &root_task);
-	//»ñÈ¡Á÷³ÌÈÎÎñÄ¿±êÎÄ¼ş¼ĞÖĞµÄµ±Ç°¶ÔÏó
-	EPM_ask_attachments(root_task, EPM_target_attachment, &count, &attachments);//count ÎªÁ÷³ÌÖĞÄ¿±êÎÄ¼ş¼ĞÖĞµÄ¶ÔÏóÊıÁ¿  attachments Îªµ±Ç°¶ÔÏóÊı¾İ¼¯
-	//»ñÈ¡²ÎÊı¸öÊı
+	//è·å–æµç¨‹ä»»åŠ¡ç›®æ ‡æ–‡ä»¶å¤¹ä¸­çš„å½“å‰å¯¹è±¡
+	EPM_ask_attachments(root_task, EPM_target_attachment, &count, &attachments);//count ä¸ºæµç¨‹ä¸­ç›®æ ‡æ–‡ä»¶å¤¹ä¸­çš„å¯¹è±¡æ•°é‡  attachments ä¸ºå½“å‰å¯¹è±¡æ•°æ®é›†
+	//è·å–å‚æ•°ä¸ªæ•°
 	arg_cnt = TC_number_of_arguments(msg.arguments);
 
 	if (arg_cnt > 0)
 	{
 		for (int i = 0; i < arg_cnt; i++)
 		{
-			ifail = AOM_ask_value_string(attachments[i], "item_id", &item_id); //µÃµ½itemµÄid
+			ifail = AOM_ask_value_string(attachments[i], "item_id", &item_id); //å¾—åˆ°itemçš„id
 			ifail = ITEM_find_item(item_id,&item_tag);
 			ITK__convert_tag_to_uid(item_tag,&uid);
 		}
 
 	}
 
-	hr = m_pConnection.CreateInstance(_uuidof(Connection));//´´½¨Á¬½Ó¶ÔÏóÊµÀı
+	hr = m_pConnection.CreateInstance(_uuidof(Connection));//åˆ›å»ºè¿æ¥å¯¹è±¡å®ä¾‹
 	if (SUCCEEDED(hr))
 	{
 
 		m_pConnection->ConnectionString = ("Provider = SQLOLEDB.1; Persist Security Info = False; User ID = infodba; Password=infodba; Initial Catalog = TCTEST2; Data Source = 10.110.81.13 ");
 		printf("\n==========================================================\n");
-		hr = m_pConnection->Open("", "", "", adConnectUnspecified);//´ò¿ªÊı¾İ¿â
+		hr = m_pConnection->Open("", "", "", adConnectUnspecified);//æ‰“å¼€æ•°æ®åº“
 		if (FAILED(hr))
 		{
 			printf("Open Failed!");
@@ -82,10 +82,10 @@ int jl_dmu_auto(EPM_action_message_t msg) {
 		}
 		else
 		{
-			printf("¿ªÊ¼ĞŞ¸Ä¿Ø¼ş\n");
+			printf("å¼€å§‹ä¿®æ”¹æ§ä»¶\n");
 			CString strSql;
 			CString updateSql;
-	//		strSql.Format(_T("INSERT INTO [Éú²ú¿ÆÊı¾İ¿â].[dbo].[tb_Process_Bom]([LinesNo],[ItemCode],[ItemName],[DrawingNo],[ProcessName],[EquiNo],[EquiName],[Designer],[ItemType],[CustomerDrawingNo],[MBomCode],[Material],[ProcessOwner],[RevNo],[OBID],[SysNo],[State]) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s')"), LineID, ItemCode, ItemName, DrawingNo, ProcessName, EquiNo, EquiNames, Designer, Classify, CustomerDrawing, MBOMCode, MaterialNam, ProcessOwner, RevNo, OBID, SysNo, "UnCheck");
+	//		strSql.Format(_T("INSERT INTO [ç”Ÿäº§ç§‘æ•°æ®åº“].[dbo].[tb_Process_Bom]([LinesNo],[ItemCode],[ItemName],[DrawingNo],[ProcessName],[EquiNo],[EquiName],[Designer],[ItemType],[CustomerDrawingNo],[MBomCode],[Material],[ProcessOwner],[RevNo],[OBID],[SysNo],[State]) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s','%s','%s')"), LineID, ItemCode, ItemName, DrawingNo, ProcessName, EquiNo, EquiNames, Designer, Classify, CustomerDrawing, MBOMCode, MaterialNam, ProcessOwner, RevNo, OBID, SysNo, "UnCheck");
 			strSql.Format(_T("SELECT ENABLED FROM GD_CONTROLSTYPE_TABLE WHERE ORDER_TAGU = '%s' AND CONTROL_NAME = '%s'"),uid,control_name);
 			char* describeSelect = (char*)calloc(1024, sizeof(char));
 			char* describeUpdate = (char*)calloc(1024, sizeof(char));
@@ -107,7 +107,7 @@ int jl_dmu_auto(EPM_action_message_t msg) {
 			try
 			{
 				QuerySQLNoInputParam(describeSelect, &outputColumn, &outputValueCount, &outputValue);
-				printf("×´Ì¬Îª: %s",**outputValue);
+				printf("çŠ¶æ€ä¸º: %s",**outputValue);
 				if (strcmp(outputValue[0][0], "true")==0) {
 					m_pConnection->Execute(_bstr_t(describeUpdate), 0, adCmdText);
 					
@@ -115,7 +115,7 @@ int jl_dmu_auto(EPM_action_message_t msg) {
 				m_pConnection->Execute(_bstr_t(label45), 0, adCmdText);
 				m_pConnection->Execute(_bstr_t(label46), 0, adCmdText);
 				//m_pConnection->Execute(_bstr_t(updateDescribe), 0, adCmdText);
-				printf("¸üĞÂ½áÊø\n");
+				printf("æ›´æ–°ç»“æŸ\n");
 			}
 			catch (_com_error e)
 			{
@@ -130,6 +130,6 @@ int jl_dmu_auto(EPM_action_message_t msg) {
 	{
 		printf("Create instance of connection failed!");
 		return 1;
-
+		//ä½ æ˜¯çŒªå˜›
 	}
 }
