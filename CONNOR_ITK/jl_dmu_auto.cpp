@@ -131,6 +131,7 @@ int jl_dmu_auto(EPM_action_message_t msg) {
 		printf("Create instance of connection failed!");
 		return 1;
 		//你是猪嘛 我笑了
-		
+		//把爷逗笑了
+
 	}
 }
