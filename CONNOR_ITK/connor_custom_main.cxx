@@ -18,13 +18,13 @@ extern "C" {
 	{
 		int ifail = ITK_ok;
 		ifail = CUSTOM_register_exit(
-			"connor",
+			"jl",
 			"USERSERVICE_register_methods",
 			(CUSTOM_EXIT_ftn_t)USERSERVICE_custom_register_methods);
 
 
 		ifail = CUSTOM_register_exit(
-			"connor",
+			"jl",
 			"USER_gs_shell_init_module",
 			(CUSTOM_EXIT_ftn_t)CUST_init_module);
 

@@ -128,13 +128,16 @@
     <ClCompile Include="connor_custom_main.cxx" />
     <ClCompile Include="epm_register_handler.cxx" />
     <ClCompile Include="JL_Change_Inspection_Of_Basic_Part.cxx" />
+    <ClCompile Include="jl_dmu_auto.cpp" />
     <ClCompile Include="jl_insert_img_pdf.cxx" />
     <ClCompile Include="jl_insert_modular.cxx" />
     <ClCompile Include="JL_Send_Mail.cxx" />
+    <ClCompile Include="ocilib.cxx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="epm_handler_common.h" />
     <ClInclude Include="epm_register_handler.h" />
+    <ClInclude Include="ocilib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

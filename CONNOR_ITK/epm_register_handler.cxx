@@ -42,6 +42,19 @@ extern DLLAPI int CUST_init_module(int *decision, va_list args)
 		printf("register JL_Send_Mail successfully\n");
 	}
 	
+	//DMU自动改sql
+	ifail = EPM_register_action_handler("jl_dmu_auto", "jl_dmu_auto",
+		(EPM_action_handler_t)jl_dmu_auto);
+
+	if (ifail)
+	{
+		printf("register jl_dmu_auto failed\n");
+	}
+	else
+	{
+		printf("register jl_dmu_auto successfully\n");
+	}
+
 
 	//PDF插入图片
 	ifail = EPM_register_action_handler("jl_insert_img_pdf", "jl_insert_img_pdf",

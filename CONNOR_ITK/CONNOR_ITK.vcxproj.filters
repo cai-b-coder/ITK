@@ -31,6 +31,12 @@
     <ClCompile Include="jl_insert_modular.cxx">
       <Filter>handler</Filter>
     </ClCompile>
+    <ClCompile Include="jl_dmu_auto.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="ocilib.cxx">
+      <Filter>common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="epm_handler_common.h">
@@ -38,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="epm_register_handler.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ocilib.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
